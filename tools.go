@@ -55,7 +55,7 @@ func (df *DataFrame) FilterRows(condition func(map[string]interface{}) bool) *Da
 	}
 
 	for i := 0; i < df.RowCount(); i++ {
-		row := df.getRow(i)
+		row := df.GetRow(i)
 		if condition(row) {
 			for colName, value := range row {
 				newDF.columns[colName] = append(newDF.columns[colName], value)
@@ -74,8 +74,8 @@ func (df *DataFrame) RowCount() int {
 	return 0
 }
 
-// getRow возвращает строку данных в виде мапы
-func (df *DataFrame) getRow(index int) map[string]interface{} {
+// GetRow возвращает строку данных в виде мапы
+func (df *DataFrame) GetRow(index int) map[string]interface{} {
 	row := make(map[string]interface{})
 	for colName, colData := range df.columns {
 		row[colName] = colData[index]
