@@ -1,4 +1,4 @@
-package golangdatatools
+package gdt
 
 import (
 	"errors"
